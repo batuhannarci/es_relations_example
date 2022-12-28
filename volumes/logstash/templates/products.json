@@ -1,0 +1,81 @@
+{
+    "index_patterns": "products",
+    "template": {
+        "settings" : {
+            "index" : {
+                "number_of_shards" : "1",
+                "number_of_replicas" : "1"
+            }
+        },
+        "mappings": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "barcode": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "brand_name": {
+                    "type": "keyword",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "category_name": {
+                    "type": "keyword",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "name": {
+                    "type": "keyword",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "product_id": {
+                    "type": "long"
+                },
+                "tag_name": {
+                    "type": "keyword",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "join_field": { 
+                    "type": "join",
+                    "relations": {
+                        "product": "tag"
+                    }
+                },
+                "type": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
